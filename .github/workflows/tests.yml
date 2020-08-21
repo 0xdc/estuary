@@ -2,9 +2,19 @@ name: test suite
 
 on:
   push:
-    branches: [ release ]
+    branches:
+    - main
+    - master
+    - release
+    - production
+    - develop
+    - 'feature/**'
+    - 'bugfix/**'
+    - 'release/*'
+    - 'hotfix/**'
+    - 'support/**'
   pull_request:
-    branches: [ release ]
+    branches: [ release, develop ]
 
 jobs:
   build:
