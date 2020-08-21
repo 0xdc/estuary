@@ -16,6 +16,7 @@ def create_test_database():
     try:
         command.upgrade(config, "head")
         yield
+        command.downgrade(config, "base")
     finally:
         drop_database(test_url)
 
