@@ -1,8 +1,8 @@
-# from starlette.routing import Mount, Route, WebSocketRoute
-# from . import views
+from starlette.routing import WebSocketRoute  # Route, Mount
+from . import views
 
 routes = [
         # Route("/endpoint", endpoint=..., methods=["GET", "POST"], name=...),
         # Mount("/path", routes=[...] name=...),
-        # WebSocketRoute("/socket", endpoint=..., name=...),
+        WebSocketRoute("/ws", views.echo.Echo),
 ]
