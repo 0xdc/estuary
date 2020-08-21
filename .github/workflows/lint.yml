@@ -7,7 +7,7 @@ on:
     branches: [ release ]
 
 jobs:
-  build:
+  lint:
 
     runs-on: ubuntu-latest
 
