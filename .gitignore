@@ -1,0 +1,6 @@
+.env
+__pycache__
+*.pyc
+.coverage
+.eggs/
+estuary.egg-info/
