@@ -24,6 +24,7 @@ jobs:
     - name: Coverage with pytest
       run: |
         coverage run -m pytest
-        coverage report
+        coverage report -m
       env:
         DATABASE_URL: "sqlite:///db.sqlite"
+        DEBUG: True

@@ -5,9 +5,13 @@ Requirements:
 * Database server (primarily MySQL, sqlite3 for smaller installations)
 * Static file webserver
 
+Install:
+
+  pip install -e git+https://github.com/0xdc/estuary#egg=estuary
+
 Development:
 
-  python -malembic.config upgrade head
+  alembic upgrade head  
   DEBUG=1 python -mestuary
 
 Production:
@@ -16,9 +20,10 @@ Production:
 
 Create migrations:
 
-  python -malembic.config revision --autogenerate -m "message"
+  alembic revision --autogenerate -m "message"
 
 Test:
 
-  coverage run -m pytest
-  coverage report
+  pip install -e .[test]  
+  coverage run -m pytest  
+  coverage report --include="estuary/*,migrations/*,tests/*" -m
