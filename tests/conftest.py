@@ -14,6 +14,7 @@ def create_test_database():
     create_database(test_url)
     config = Config("alembic.ini")
     try:
+        command.upgrade(config, "head", "--sql")  # offline, for coverage
         command.upgrade(config, "head")
         yield
         command.downgrade(config, "base")
