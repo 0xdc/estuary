@@ -7,23 +7,33 @@ Requirements:
 
 Install:
 
-  pip install -e git+https://github.com/0xdc/estuary#egg=estuary
+```sh
+pip install -e git+https://github.com/0xdc/estuary#egg=estuary
+```
 
 Development:
 
-  alembic upgrade head  
-  DEBUG=1 python -mestuary
+```sh
+alembic upgrade head
+DEBUG=1 python -mestuary
+```
 
 Production:
 
-  uvicorn estuary:app
+```sh
+uvicorn estuary:app
+```
 
 Create migrations:
 
-  alembic revision --autogenerate -m "message"
+```sh
+alembic revision --autogenerate -m "message"
+```
 
 Test:
 
-  pip install -e .[test]  
-  coverage run -m pytest  
-  coverage report --include="estuary/*,migrations/*,tests/*" -m
+```sh
+pip install -e .[test]
+coverage run -m pytest
+coverage report --include="estuary/*,migrations/*,tests/*" -m
+```
