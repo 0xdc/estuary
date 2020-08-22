@@ -4,5 +4,5 @@ from . import views
 routes = [
         # Route("/endpoint", endpoint=..., methods=["GET", "POST"], name=...),
         # Mount("/path", routes=[...] name=...),
-        WebSocketRoute("/ws", views.echo.Echo, name="echo"),
+        WebSocketRoute("/echo", views.echo.Echo, name="echo"),
 ]
