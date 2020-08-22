@@ -21,7 +21,7 @@ DEBUG=1 python -mestuary
 Production:
 
 ```sh
-uvicorn estuary:app
+uvicorn estuary.asgi:app
 ```
 
 Create migrations:

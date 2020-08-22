@@ -1,3 +1,3 @@
 import uvicorn
 
-uvicorn.run("estuary:app", reload=True)
+uvicorn.run("estuary.asgi:app", reload=True)

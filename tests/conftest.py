@@ -4,7 +4,7 @@ from alembic.config import Config
 from starlette.testclient import TestClient
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
-from estuary import app, settings
+from estuary import settings
 
 
 @pytest.fixture(autouse=True)
@@ -24,5 +24,6 @@ def create_test_database():
 
 @pytest.fixture()
 def client():
+    from estuary.asgi import app
     with TestClient(app) as client:
         yield client
