@@ -1,0 +1,72 @@
+<!DOCTYPE html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>pinger</title>
+  </head>
+  <body>
+    <p>
+      Ping stats for ws://
+      <input id="SockJSHost" value="localhost:8000" >
+      /echo
+      <input type="submit" value="reconnect"
+        onclick="sock.close();" >
+    </p>
+    <canvas id="myCanvas" width="1000" height="1000"></canvas>
+  </body>
+  <script>
+    var sock,
+        graph = document.getElementById('myCanvas')
+          .getContext('2d');
+      
+    function draw(time, rtt, colour) {
+      var x = (time % 1000000) / graph.canvas.width;//one pixel per second
+      graph.fillStyle = '#eee';
+      graph.rect(x, 0, 100, graph.canvas.height);
+      graph.fill();
+      graph.beginPath();
+      graph.moveTo(x, graph.canvas.height - rtt);
+      graph.lineTo(x, graph.canvas.height);//1000px height = 10s
+      graph.strokeStyle = colour;
+      graph.closePath();
+      graph.stroke();
+    }
+    
+    function connect() {
+      sock = new WebSocket('ws://'
+        +document.getElementById('SockJSHost').value
+        +'/echo');
+ 
+      sock.onopen = function() {
+        draw(new Date().getTime(), graph.canvas.height, 'green');
+      }
+    
+      sock.onmessage = function(e) {
+        var sentTime = parseInt(e.data);
+        var now = new Date().getTime();
+        var roundTripTime = now - sentTime;
+        draw(sentTime, roundTripTime, 'black');
+      }
+ 
+      sock.onclose = function() {
+        draw(new Date().getTime(), graph.canvas.height, 'red');
+      }
+    }
+    connect();
+    
+    setInterval(function() {
+      var now = new Date().getTime();
+      if(sock.readyState==WebSocket.CONNECTING) {
+        draw(now, 200, 'green');
+      } else if(sock.readyState==WebSocket.OPEN) {
+        sock.send(now);
+        //draw(now, 200, 'blue');
+      } else if(sock.readyState==WebSocket.CLOSING) {
+        draw(now, 200, 'orange');
+      } else {//CLOSED or non-existent
+        draw(now, 200, 'red');
+        connect();
+      }
+    }, 1000);
+  </script>
+</html>
