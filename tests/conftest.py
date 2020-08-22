@@ -7,10 +7,10 @@ from sqlalchemy_utils import database_exists, create_database, drop_database
 from estuary import app, settings
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(autouse=True)
 def create_test_database():
     test_url = str(settings.TEST_DATABASE_URL)
-    assert not database_exists(test_url)
+    assert not database_exists(test_url), 'Test database already exists. Aborting tests.'
     create_database(test_url)
     config = Config("alembic.ini")
     try:
