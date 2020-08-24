@@ -8,3 +8,4 @@ node_modules/
 .cache/
 db.sqlite
 static/dist/
+.vscode/.ropeproject/objectdb
