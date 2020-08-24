@@ -14,12 +14,13 @@ if settings.DEBUG:
 middleware = [
     Middleware(
         CORSMiddleware,
-            allow_origins=['*'],
-            allow_methods=['"']
-            ),
+        allow_origins=['*'],
+        allow_methods=['*']
+    ),
 ]
 
 app = Starlette(
     debug=settings.DEBUG,
     middleware=middleware,
-    routes=routes)
+    routes=routes,
+)
