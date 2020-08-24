@@ -6,3 +6,5 @@ __pycache__
 estuary.egg-info/
 node_modules/
 .cache/
+db.sqlite
+static/dist/
