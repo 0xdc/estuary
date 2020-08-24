@@ -3,9 +3,20 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "all",
+            "configurations": [
+                "parcel serve",
+                "uvicorn estuary",
+                "chrome",
+                "firefox"
+            ]
+        }
+    ],
     "configurations": [
         {
-            "name": "Parcel: serve static assets",
+            "name": "parcel serve",
             "request": "launch",
             "runtimeArgs": [
                 "run-script",
@@ -16,22 +27,32 @@
                 "<node_internals>/**"
             ],
             "type": "pwa-node",
-            "cwd": "${workspaceFolder}/static"
+            "cwd": "${workspaceFolder}/static",
+            // Node processes hang around after parcel stops...
+            "postDebugTask": "pkill"
         },
         {
-            "name": "Python: Estuary API",
+            "name": "uvicorn estuary",
             "type": "python",
             "request": "launch",
-            "module": "estuary"
+            "module": "estuary",
+            "console": "internalConsole",
+            "envFile": "${workspaceFolder}/.env"
         },
-        
         {
-            "name": "Chrome: browse",
+            "name": "chrome",
             "request": "launch",
             "type": "pwa-chrome",
             "url": "http://localhost:1234",
             "webRoot": "${workspaceFolder}/static/dist"
+        },
+        {
+            "name": "firefox",
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "url": "http://localhost:1234/",
+            "webRoot": "${workspaceFolder}/static/dist",
         }
-        
     ]
 }
