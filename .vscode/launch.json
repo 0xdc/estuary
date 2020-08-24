@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Parcel: Serve static assets",
+            "name": "Parcel: serve static assets",
             "request": "launch",
             "runtimeArgs": [
                 "run-script",
@@ -15,7 +15,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "node",
+            "type": "pwa-node",
             "cwd": "${workspaceFolder}/static"
         },
         {
@@ -23,6 +23,15 @@
             "type": "python",
             "request": "launch",
             "module": "estuary"
+        },
+        
+        {
+            "name": "Chrome: browse",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:1234",
+            "webRoot": "${workspaceFolder}/static/dist"
         }
+        
     ]
 }
