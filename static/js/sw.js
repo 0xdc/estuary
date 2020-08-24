@@ -8,4 +8,6 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err);
     });
   });
+} else {
+  console.log('ServiceWorkers are not supported in your browser.')
 }
