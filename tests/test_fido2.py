@@ -12,7 +12,7 @@ def test_registration_begin_post(client):
 
     response = client.post(client.app.url_path_for("registration_begin"))
 
-    c = cbor.decode(response.content())
+    c = cbor.decode(response.content)
 
     assert 'id' in c
     assert 'name' in c
