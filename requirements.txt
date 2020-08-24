@@ -1,5 +1,6 @@
 aiofiles
 alembic
+fido2
 nejma
 pymysql
 sqlalchemy
