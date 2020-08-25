@@ -22,7 +22,7 @@ DEBUG=1 python -mestuary
 Production:
 
 ```sh
-(cd static; npm i --dev; parcel build *.html)
+(cd static; npm i --dev; npm run build)
 uvicorn estuary.asgi:app
 ```
 
@@ -37,5 +37,5 @@ Test:
 ```sh
 pip install -e .[test]
 coverage run -m pytest
-coverage report --include="estuary/*,migrations/*,tests/*" -m
+coverage report -m --include="estuary/*,migrations/*,tests/*"
 ```
