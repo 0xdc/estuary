@@ -8,4 +8,5 @@ __pycache__
 *.sqlite*
 estuary.egg-info/
 node_modules/
+radata/ 
 static/dist/

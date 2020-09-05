@@ -10,11 +10,23 @@
                 "parcel serve",
                 "uvicorn estuary",
                 "chrome",
-                "firefox"
+                "firefox",
+                "gun"
             ]
         }
     ],
     "configurations": [
+        {
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "start"
+            ],
+            "name": "gun",
+            "request": "launch",
+            "type": "pwa-node",
+            "console": "internalConsole",
+            "cwd": "${workspaceFolder}/static"
+        },
         {
             "name": "parcel serve",
             "request": "launch",

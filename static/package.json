@@ -7,5 +7,13 @@
   "scripts": {
     "build": "parcel build *.html",
     "serve": "parcel serve *.html"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "@gooddollar/react-native-webview-crypto": "0.0.20",
+    "bufferutil": "^4.0.1",
+    "gun": "^0.2020.520",
+    "text-encoding": "^0.7.0",
+    "utf-8-validate": "^5.0.2"
   }
 }
