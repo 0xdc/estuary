@@ -6,8 +6,6 @@ from starlette.testclient import TestClient
 
 environ["DATABASE_URL"] = "sqlite:///:memory:"
 
-from estuary import settings # noqa
-
 
 @pytest.fixture(autouse=True)
 def create_test_database():
